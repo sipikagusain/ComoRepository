@@ -1,0 +1,21 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  db:
+  image: postgres
+    networks:
+    - webnet
+    environment :
+      POSTGRES_PASSWORD: 123
+      POSTGRES_USER: sipika
+      POSTGRES_DB: como
+
+  web:
+    image : nest-api
+    ports: 
+    - "3890:3890"
+    networks:
+    -webnet
+   environmemt:
+    DB_HOST: db 
+networks:
+webnet:
